@@ -1,4 +1,4 @@
-# Auto Setup
+## Setup Fabric Nodes automatically
 
 You can use the following script to install docker and start a 4-node PBFT cluster in one instruction.
 
@@ -6,7 +6,7 @@ You can use the following script to install docker and start a 4-node PBFT clust
 $ bash setupFabric.sh
 ```
 
-## Manually Setup
+##Setup Fabric Nodes manually
 If you want to start it manually, follow the steps:
 
 First, pull necessary images first. You can ignore this step if pulling official image already.
