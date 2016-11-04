@@ -3,7 +3,7 @@
 You can use the following script to install docker and start a 4-node PBFT cluster in one instruction.
 
 ```sh
-$ bash setupFabric.sh
+$ sh setupFabric.sh
 ```
 
 ##Setup Fabric Nodes manually
