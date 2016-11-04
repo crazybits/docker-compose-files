@@ -6,7 +6,7 @@
 # Currently, the binary will look for config files at corresponding path.
 
 FROM golang:1.7
-MAINTAINER crazybit.github.com@gmail.com
+MAINTAINER crazybit.github@gmail.com
 
 ENV DEBIAN_FRONTEND noninteractive
 
