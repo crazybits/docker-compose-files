@@ -34,8 +34,6 @@ $ cd pbft; docker-compose up
 
 After the cluster is synced, you can validate by deploying, invoking or querying chaincode from the container or from the host.
 
-See [hyperledger-fabric](https://github.com/yeasy/docker-hyperledger-fabric) if you've not familiar on those operations.
-
 
 ### Start 4 PBFT node cluster with member service
 
