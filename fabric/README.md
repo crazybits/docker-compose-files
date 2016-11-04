@@ -45,7 +45,7 @@ Then go to vp0, login and deploy a chaincode.
 
 ```sh
 $ docker exec -it pbft_vp0_1 bash
-# peer network login jim
+$ peer network login jim
 08:23:13.604 [networkCmd] networkLogin -> INFO 001 CLI client login...
 08:23:13.604 [networkCmd] networkLogin -> INFO 002 Local data store for client loginToken: /var/hyperledger/production/client/
 Enter password for user 'jim': 6avZQLwcUe9b
