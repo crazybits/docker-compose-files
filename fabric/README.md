@@ -57,6 +57,3 @@ Enter password for user 'jim': 6avZQLwcUe9b
 ```
 
 4 new chaincode containers will be built up automatically.
-
-## Acknowledgement
-This refers the example from the [hyperledger](https://github.com/hyperledger/fabric/tree/master/consensus/docker-compose-files) project.
