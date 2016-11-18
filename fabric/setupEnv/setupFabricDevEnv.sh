@@ -38,11 +38,11 @@ mv go /usr/local
 
 # Set the GOROOT env variable
 export GOROOT="/usr/local/go"
-mkdir workspace
-export GOPATH="workspace"
+mkdir GoPath
+export GOPATH=$HOME/GoPath
 source /etc/profile
 
-apt-get -y install libsnappy-dev zlib1g-dev libbz2-dev "build-essential"
+apt-get -y install libsnappy-dev zlib1g-dev libbz2-dev
 
 
 #####################################
