@@ -23,57 +23,39 @@ then
    exit
 fi
 
-if [ ! -d "$GOPATH/src/github.com/hyperledger/fabric" ]
-then
-    echo "Ensure fabric code is under $GOPATH/src/github.com/hyperledger/fabric"
-    exit
-fi
-
 #####################################
 # Install pre-requisite OS packages #
 #####################################
 apt-get update
-apt-get -y install software-properties-common curl git sudo wget
-
-#####################################
-# Install and setup Docker services #
-#####################################
-# Along with docker.io, aufs-tools also needs to be installed as 'auplink' which is part of aufs-tools package gets invoked during behave tests.
-apt-get -y install docker.io aufs-tools
-
-# Set DOCKER_OPTS and restart Docker daemon.
-sed  -i '/#DOCKER_OPTS=/a DOCKER_OPTS="-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"' /etc/default/docker
-systemctl restart docker
+apt-get -y install curl git wget
 
 ####################################
 # Install Go and set env variable  #
 ####################################
-# Golang binaries for ppc64le are publicly available from Unicamp and is recommended as it includes certain platform specific tuning/optimization.
-# Alternativley package part of Ubuntu disto repo can also be used.
-wget ftp://ftp.unicamp.br/pub/linuxpatch/toolchain/at/ubuntu/dists/trusty/at9.0/binary-ppc64el/advance-toolchain-at9.0-golang_9.0-3_ppc64el.deb
-dpkg -i advance-toolchain-at9.0-golang_9.0-3_ppc64el.deb
-rm -f advance-toolchain-at9.0-golang_9.0-3_ppc64el.deb
-
-# Create links under /usr/bin using update-alternatives
-update-alternatives --install /usr/bin/go go /usr/local/go/bin/go 9
-update-alternatives --install /usr/bin/gofmt gofmt /usr/local/go/bin/gofmt 9
+wget https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz
+tar -xvf go1.7.linux-amd64.tar.gz
+mv go /usr/local
 
 # Set the GOROOT env variable
 export GOROOT="/usr/local/go"
-
-####################################
-# Build and install RocksDB        #
-####################################
+mkdir workspace
+export GOPATH="workspace"
 
 apt-get -y install libsnappy-dev zlib1g-dev libbz2-dev "build-essential"
 
 
-################################################
-# Install PIP tools, behave and docker-compose #
-################################################
+#####################################
+# Install and setup Docker services #
+#####################################
 
-apt-get -y install python-pip
-pip install --upgrade pip
-pip install behave nose docker-compose
+wget -qO- https://get.docker.com/ | sh 
+sudo service docker stop
+nohup sudo docker daemon --api-cors-header="*" -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock&
 
-pip install -I flask==0.10.1 python-dateutil==2.2 pytz==2014.3 pyyaml==3.10 couchdb==1.0 flask-cors==2.0.1 requests==2.4.3 grpcio==0.13.1
+curl -L https://github.com/docker/compose/releases/download/1.9.0-rc3/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
+mkdir -p $GOPATH/src/github.com/hyperledger/
+cd $GOPATH/src/github.com/hyperledger/
+git clone https://github.com/hyperledger/fabirc.git
+
