@@ -10,6 +10,7 @@ fi
 apt-get update
 
 apt-get install curl -y
+apt-get install git -y
 
 wget -qO- https://get.docker.com/ | sh 
 sudo service docker stop

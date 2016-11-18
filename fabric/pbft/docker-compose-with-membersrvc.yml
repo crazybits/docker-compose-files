@@ -6,7 +6,7 @@
 #  vp1: validating node as peer
 #  vp2: validating node as peer
 #  vp3: validating node as peer
-# https://github.com/yeasy/docker-compose-files
+# https://github.com/crazybits/docker-compose-files
 
 membersrvc:
   image: hyperledger/fabric-membersrvc:latest
