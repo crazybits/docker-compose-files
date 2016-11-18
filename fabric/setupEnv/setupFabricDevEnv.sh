@@ -44,7 +44,6 @@ source /etc/profile
 
 apt-get -y install libsnappy-dev zlib1g-dev libbz2-dev
 
-
 #####################################
 # Install and setup Docker services #
 #####################################
