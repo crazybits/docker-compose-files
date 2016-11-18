@@ -55,7 +55,6 @@ nohup sudo docker daemon --api-cors-header="*" -H tcp://0.0.0.0:2375 -H unix:///
 curl -L https://github.com/docker/compose/releases/download/1.9.0-rc3/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
-
 mkdir -p $GOPATH/src/github.com/hyperledger/
 cd $GOPATH/src/github.com/hyperledger
 git clone https://github.com/hyperledger/fabric.git
