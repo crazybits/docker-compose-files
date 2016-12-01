@@ -10,17 +10,18 @@ MAINTAINER crazybit.github@gmail.com
 
 ENV DEBIAN_FRONTEND noninteractive
 
+#install required softwares
 RUN apk update && apk upgrade
-RUN apk add make git docker py-pip go
-RUN pip install docker-compose
+RUN apk add bash make git docker go
 
+#create required directories
 RUN mkdir -p /var/hyperledger/db \
-        && mkdir -p /var/hyperledger/production
-
-RUN mkdir -p workspace/src/github.com/hyperledger \
-        && cd workspace/src/github.com/hyperledger \
-
-RUN export GOPATH=/workspace
+        && mkdir -p /var/hyperledger/production \
+        && mkdir -p workspace/src/github.com/hyperledger \
+       
+#set GOPATH env
+RUN export GOPATH=/workspace \
+        && cd $GOPATH/src/github.com/hyperledger
 
 #pull source from gerrit
 RUN git clone --single-branch -b master --depth 1 http://gerrit.hyperledger.org/r/fabric \
@@ -38,5 +39,4 @@ RUN ln -s $GOPATH /opt/gopath
 # this is to keep compatible
 RUN PATH=$GOPATH/src/github.com/hyperledger/fabric/build/bin:$PATH
 
-RUN apk del --purge py-pip
 WORKDIR $GOPATH/src/github.com/hyperledger/fabric
