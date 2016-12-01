@@ -10,24 +10,25 @@ MAINTAINER crazybit.github@gmail.com
 
 ENV DEBIAN_FRONTEND noninteractive
 
+
 #install required softwares
 RUN apk update && apk upgrade
 RUN apk add git go
 
 #create required directories
-RUN mkdir -p gopath/src/github.com/hyperledger \
-        && cd /gopath/src/github.com/hyperledger
-#set GOPATH env  
+RUN mkdir -p /gopath/src/github.com/hyperledger 
 ENV  GOPATH  /gopath
 
+WORKDIR /gopath/src/github.com/hyperledger 
+#set GOPATH env  
+
+
 #pull source from gerritgit 
-RUN git clone --single-branch -b master --depth 1 http://gerrit.hyperledger.org/r/fabric \
-&& cd /gopath/src/github.com/hyperledger/fabric/peer \
-&& go install \
-&& go clean \
-&& cd /gopath/src/github.com/hyperledger/fabric/orderer \
-&& go install \
-&& go clean
+RUN git clone --single-branch -b master --depth 1 http://gerrit.hyperledger.org/r/fabric 
+WORKDIR /gopath/src/github.com/hyperledger/fabric/peer
+RUN  go install;go clean
+WORKDIR /gopath/src/github.com/hyperledger/fabric/orderer
+RUN  go install;go clean
 #&& cp $GOPATH/src/github.com/hyperledger/fabric/devenv/limits.conf /etc/security/limits.conf
 
 # this is only a workaround for current hard-coded problem when using as fabric-baseimage.
