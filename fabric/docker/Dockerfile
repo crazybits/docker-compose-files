@@ -20,7 +20,7 @@ RUN mkdir -p /var/hyperledger/db \
         && mkdir -p workspace/src/github.com/hyperledger \
        
 #set GOPATH env
-ENV  GOPATH = "/workspace"
+ENV  GOPATH  /workspace
 RUN cd $GOPATH/src/github.com/hyperledger
 
 #pull source from gerrit
