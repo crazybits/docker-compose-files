@@ -12,7 +12,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 #install required softwares
 RUN apk update && apk upgrade
-RUN apk add bash make git docker go
+RUN apk add bash make git go
 
 #create required directories
 RUN mkdir -p /var/hyperledger/db \
@@ -21,14 +21,14 @@ RUN mkdir -p /var/hyperledger/db \
        
 #set GOPATH env
 ENV  GOPATH  /workspace
-RUN cd $GOPATH/src/github.com/hyperledger
+RUN cd /workspace/src/github.com/hyperledge
 
 #pull source from gerrit
 RUN git clone --single-branch -b master --depth 1 http://gerrit.hyperledger.org/r/fabric \
-&& cd $GOPATH/src/github.com/hyperledger/fabric/peer \
+&& cd /workspace/src/github.com/hyperledger/fabric/peer \
 && go install \
 && go clean \
-&& cd $GOPATH/src/github.com/hyperledger/fabric/orderer \
+&& cd /workspace/src/github.com/hyperledger/fabric/orderer \
 && go install \
 && go clean
 #&& cp $GOPATH/src/github.com/hyperledger/fabric/devenv/limits.conf /etc/security/limits.conf
@@ -38,5 +38,5 @@ RUN ln -s $GOPATH /opt/gopath
 
 # this is to keep compatible
 RUN PATH=$GOPATH/src/github.com/hyperledger/fabric/build/bin:$PATH
-
+RUN apk del --purge git make
 WORKDIR $GOPATH/src/github.com/hyperledger/fabric
