@@ -5,24 +5,22 @@
 
 # Currently, the binary will look for config files at corresponding path.
 
-FROM alpine:3.4
+FROM alpine:edge
 MAINTAINER crazybit.github@gmail.com
 
 ENV DEBIAN_FRONTEND noninteractive
 
 #install required softwares
 RUN apk update && apk upgrade
-RUN apk add bash make git go
+RUN apk add git go
 
 #create required directories
-RUN mkdir -p /var/hyperledger/db \
-        && mkdir -p /var/hyperledger/production \
-        && mkdir -p gopath/src/github.com/hyperledger \
+RUN mkdir -p gopath/src/github.com/hyperledger \
         && cd /gopath/src/github.com/hyperledger
 #set GOPATH env  
 ENV  GOPATH  /gopath
 
-#pull source from gerrit
+#pull source from gerritgit 
 RUN git clone --single-branch -b master --depth 1 http://gerrit.hyperledger.org/r/fabric \
 && cd /gopath/src/github.com/hyperledger/fabric/peer \
 && go install \
@@ -37,5 +35,7 @@ RUN ln -s $GOPATH /opt/gopath
 
 # this is to keep compatible
 RUN PATH=$GOPATH/src/github.com/hyperledger/fabric/build/bin:$PATH
-RUN apk del --purge git make
-WORKDIR $GOPATH/src/github.com/hyperledger/fabric
+
+##remove the installed software to minimize the images size
+RUN apk del --purge git go
+RUN rm -rf $GOPATH
