@@ -18,6 +18,7 @@ RUN apk add bash make git go
 RUN mkdir -p /var/hyperledger/db \
         && mkdir -p /var/hyperledger/production \
         && mkdir -p /gopath/src/github.com/hyperledger \
+        && pwd
        
 #set GOPATH env
 ENV  GOPATH  /gopath
