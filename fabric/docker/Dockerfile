@@ -17,18 +17,18 @@ RUN apk add bash make git go
 #create required directories
 RUN mkdir -p /var/hyperledger/db \
         && mkdir -p /var/hyperledger/production \
-        && mkdir -p workspace/src/github.com/hyperledger \
+        && mkdir -p /workspace/src/github.com/hyperledger \
        
 #set GOPATH env
 ENV  GOPATH  /workspace
-RUN cd /workspace/src/github.com/hyperledge
+RUN cd $GOPATH/src/github.com/hyperledge
 
 #pull source from gerrit
 RUN git clone --single-branch -b master --depth 1 http://gerrit.hyperledger.org/r/fabric \
-&& cd /workspace/src/github.com/hyperledger/fabric/peer \
+&& cd $GOPATH/src/github.com/hyperledger/fabric/peer \
 && go install \
 && go clean \
-&& cd /workspace/src/github.com/hyperledger/fabric/orderer \
+&& cd $GOPATH/src/github.com/hyperledger/fabric/orderer \
 && go install \
 && go clean
 #&& cp $GOPATH/src/github.com/hyperledger/fabric/devenv/limits.conf /etc/security/limits.conf
