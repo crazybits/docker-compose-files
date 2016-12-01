@@ -23,7 +23,7 @@ RUN mkdir -p workspace/src/github.com/hyperledger \
 RUN export GOPATH=/root/workspace
 
 #pull source from gerrit
-&& git clone --single-branch -b master --depth 1 http://gerrit.hyperledger.org/r/fabric \
+RUN git clone --single-branch -b master --depth 1 http://gerrit.hyperledger.org/r/fabric \
 && cd $GOPATH/src/github.com/hyperledger/fabric/peer \
 && go install \
 && go clean \
