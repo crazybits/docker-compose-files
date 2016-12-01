@@ -20,8 +20,8 @@ RUN mkdir -p /var/hyperledger/db \
         && mkdir -p workspace/src/github.com/hyperledger \
        
 #set GOPATH env
-RUN export GOPATH=/workspace \
-        && cd $GOPATH/src/github.com/hyperledger
+ENV  GOPATH=/workspace
+RUN cd $GOPATH/src/github.com/hyperledger
 
 #pull source from gerrit
 RUN git clone --single-branch -b master --depth 1 http://gerrit.hyperledger.org/r/fabric \
