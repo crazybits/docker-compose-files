@@ -29,7 +29,7 @@ RUN git clone --single-branch -b master --depth 1 http://gerrit.hyperledger.org/
 && go clean \
 && cd $GOPATH/src/github.com/hyperledger/fabric/orderer \
 && go install \
-&& go clean \
+&& go clean
 #&& cp $GOPATH/src/github.com/hyperledger/fabric/devenv/limits.conf /etc/security/limits.conf
 
 # this is only a workaround for current hard-coded problem when using as fabric-baseimage.
