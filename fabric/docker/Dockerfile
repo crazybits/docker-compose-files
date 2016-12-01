@@ -24,10 +24,10 @@ ENV  GOPATH  /gopath
 
 #pull source from gerrit
 RUN git clone --single-branch -b master --depth 1 http://gerrit.hyperledger.org/r/fabric \
-&& cd $GOPATH/src/github.com/hyperledger/fabric/peer \
+&& cd /gopath/src/github.com/hyperledger/fabric/peer \
 && go install \
 && go clean \
-&& cd $GOPATH/src/github.com/hyperledger/fabric/orderer \
+&& cd /gopath/src/github.com/hyperledger/fabric/orderer \
 && go install \
 && go clean
 #&& cp $GOPATH/src/github.com/hyperledger/fabric/devenv/limits.conf /etc/security/limits.conf
