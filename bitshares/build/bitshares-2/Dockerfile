@@ -7,7 +7,7 @@ WORKDIR /build
 ## Update package database
 RUN apk update && apk upgrade
 RUN apk add bash cmake make automake autoconf gcc g++ libbz2 libtool boost-dev openssl-dev ncurses doxygen git
-RUN git clone https://github.com/bitshares/bitshares-2 /bitshares-2-git
+RUN git clone https://github.com/bitshares/bitshares-core /bitshares-2-git
 RUN git -C /bitshares-2-git submodule update --init --recursive
 RUN cmake -DCMAKE_BUILD_TYPE=Release /bitshares-2-git
 RUN make || make -j 1
