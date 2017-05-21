@@ -1,5 +1,5 @@
-FROM alpine:3.4
-MAINTAINER crazybit <273593465@qq.com>
+FROM alpine:3.6
+MAINTAINER crazybit <crazybit.github@gmail.com>
 
 RUN mkdir /build
 WORKDIR /build
