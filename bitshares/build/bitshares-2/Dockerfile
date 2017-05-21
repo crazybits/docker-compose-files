@@ -10,7 +10,7 @@ RUN apk add bash cmake make automake autoconf gcc g++ libbz2 libtool boost-dev o
 RUN git clone --single-branch -b master --depth 1 https://github.com/bitshares/bitshares-core /bitshares-2-git
 RUN git -C /bitshares-2-git submodule update --init --recursive
 RUN cmake -DCMAKE_BUILD_TYPE=Release /bitshares-2-git
-RUN make || make -j 1
+RUN make || make -j 2
 RUN cp /build/programs/witness_node/witness_node \ 
        /build/programs/delayed_node/delayed_node \ 
        /build/programs/cli_wallet/cli_wallet \ 
