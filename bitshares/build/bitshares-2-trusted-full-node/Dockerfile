@@ -2,7 +2,7 @@ FROM crazybit/bitshares-2
 MAINTAINER crazybit <crazybit.github@gmail.com>
 
 ## Copying default configuration
-RUN mkdir /data_trusted_node
+RUN mkdir /.Bitshares2
 ADD docker/start.sh /start.sh
 RUN chmod a+x /start.sh
 
