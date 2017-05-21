@@ -1,10 +1,10 @@
 node:
- image: crazybit/bitshares-2-trusted-full-node
+ image: bitshares/bitshares-2-trusted-full-node
  ports: 
  - "127.0.0.1:8090:8090"
  - "127.0.0.1:9090:9090"
  volumes:
-   - ~/.Bitshares2:/.Bitshares2
+   - ~/.Bitshares2:/data_trusted_node
 
 
 # price-feeds:
@@ -31,10 +31,21 @@ node:
 #   - node
 
 web-wallet:
- image: crazybit/bitshares-2-webwallet
+ image: bitshares/bitshares-2-webwallet
  ports:
   - "127.0.0.1:80:80"
   - "127.0.0.1:443:443"
  volumes:
    - ./conf/web-wallet/www:/www
    - ./conf/web-wallet/conf:/conf
+
+
+
+# web-wallet:
+#  image: crazybit/bitshares-2-webwallet-full
+#  ports:
+#   - "127.0.0.1:80:80"
+#   - "127.0.0.1:443:443"
+#  volumes:
+#    - ./conf/web-wallet/www:/www
+#    - ./conf/web-wallet/conf:/conf
