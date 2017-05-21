@@ -7,7 +7,7 @@ RUN apt-get -y upgrade
 RUN apt-get install -y nodejs-legacy npm git nginx
 RUN npm install -g coffee-script
 
-RUN git clone http://github.com/bitshares/bitshares-2-ui /build
+RUN git clone http://github.com/bitshares/bitshares-ui /build
 WORKDIR /build
 RUN for I in cli dl web; do cd $I; npm install; cd ..; done 
 

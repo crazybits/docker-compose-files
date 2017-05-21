@@ -1,4 +1,4 @@
-FROM bitshares/bitshares-2
+FROM crazybit/bitshares-2
 MAINTAINER crazybit <crazybit.github@gmail.com>
 
 VOLUME ["/conf/witness/"]
