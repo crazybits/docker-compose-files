@@ -1,8 +1,8 @@
 node:
  image: crazybit/bitshares-2-trusted-full-node
  ports: 
-  - 8090
-  - 9090
+ - "127.0.0.1:8090:8090"
+ - "127.0.0.1:9090:9090"
  volumes:
    - ~/.Bitshares2:/.Bitshares2
 
@@ -14,14 +14,14 @@ node:
 #  volumes:
 #   - ./conf/pricefeed:/conf/pricefeed
 
-cli-wallet:
- image: crazybit/bitshares-2-cli-wallet
- ports: 
-  - "127.0.0.1:8092:8092"
- links:
-  - node
- volumes:
-  - ./conf/cli-wallet:/conf/cli-wallet
+# cli-wallet:
+#  image: crazybit/bitshares-2-cli-wallet
+#  ports: 
+#   - "127.0.0.1:8092:8092"
+#  links:
+#   - node
+#  volumes:
+#   - ./conf/cli-wallet:/conf/cli-wallet
 
 # delayed-node:
 #  build: build/bitshares-2-delayed-node
@@ -33,8 +33,8 @@ cli-wallet:
 web-wallet:
  image: crazybit/bitshares-2-webwallet
  ports:
-   - 80
-   - 443
+  - "127.0.0.1:80:80"
+  - "127.0.0.1:443:443"
  volumes:
    - ./conf/web-wallet/www:/www
    - ./conf/web-wallet/conf:/conf
