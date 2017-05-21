@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.5
 MAINTAINER crazybit <crazybit.github@gmail.com>
 
 RUN mkdir /build
