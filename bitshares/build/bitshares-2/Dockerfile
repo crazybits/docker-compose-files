@@ -5,8 +5,8 @@ RUN mkdir /build
 WORKDIR /build
 
 ## Update package database
-RUN sudo apt-get update
-RUN sudo apt-get install g++ autoconf cmake git libboost-all-dev libssl-dev doxygen
+RUN apt-get update
+RUN apt-get install g++ autoconf cmake git libboost-all-dev libssl-dev doxygen
 RUN git clone --single-branch -b master --depth 1 https://github.com/bitshares/bitshares-core /bitshares-2-git
 RUN git -C /bitshares-2-git submodule update --init --recursive
 RUN cmake -DCMAKE_BUILD_TYPE=Release /bitshares-2-git
