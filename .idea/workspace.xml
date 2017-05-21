@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="11897545-8ef6-4f89-ac49-8c28988d300e" name="Default" comment="" />
+    <list default="true" id="11897545-8ef6-4f89-ac49-8c28988d300e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bitshares/build/bitshares-2/Dockerfile" afterPath="$PROJECT_DIR$/bitshares/build/bitshares-2/Dockerfile" />
+    </list>
     <list id="0f79af52-49aa-43bf-827f-d7746827f609" name="mapp local disk to container" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
