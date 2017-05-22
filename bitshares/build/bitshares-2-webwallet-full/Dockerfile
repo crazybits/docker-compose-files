@@ -4,12 +4,15 @@ MAINTAINER crazybit <crazybit.github@gmail.com>
 ## Core Utilities
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get install -y nodejs-legacy npm git nginx 
-RUN npm install -g coffee-script webpack
-
-RUN git clone http://github.com/bitshares/bitshares-ui /build
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash && \
+    nvm install v6 && \
+    nvm use v6 && \
+    apt-get install -y nodejs-legacy npm git nginx && \
+    npm install -g coffee-script webpack && \
+    git clone http://github.com/bitshares/bitshares-ui /build
+    
 WORKDIR /build
-RUN for I in cli dl web; do cd $I; npm install; cd ..; done 
+RUN cd web && npm install
 
 WORKDIR /build/web
 RUN npm run build
