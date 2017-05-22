@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get install -y curl git nginx && \
     curl -sL https://deb.nodesource.com/setup_6.x |bash - &&\
     apt-get install -y nodejs && \
-    npm install -g coffee-script webpack && \
+    npm install -g webpack && \
     git clone http://github.com/bitshares/bitshares-ui /build
     
 WORKDIR /build
