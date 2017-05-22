@@ -4,10 +4,9 @@ MAINTAINER crazybit <crazybit.github@gmail.com>
 ## Core Utilities
 RUN apt-get update && \
     apt-get -y upgrade &&\
-    apt-get install -y curl nodejs-legacy npm git nginx && \
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash && \
-    nvm install v6 && \
-    nvm use v6 && \
+    apt-get install -y curl git nginx && \
+    curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - &&\
+    apt-get install -y nodejs && \
     npm install -g coffee-script webpack && \
     git clone http://github.com/bitshares/bitshares-ui /build
     
