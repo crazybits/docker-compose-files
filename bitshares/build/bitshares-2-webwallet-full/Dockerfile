@@ -5,7 +5,7 @@ MAINTAINER crazybit <crazybit.github@gmail.com>
 RUN apt-get update && \
     apt-get -y upgrade &&\
     apt-get install -y curl git nginx && \
-    curl -sL https://deb.nodesource.com/setup_6.x | -E bash - &&\
+    curl -sL https://deb.nodesource.com/setup_6.x |bash - &&\
     apt-get install -y nodejs && \
     npm install -g coffee-script webpack && \
     git clone http://github.com/bitshares/bitshares-ui /build
