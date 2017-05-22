@@ -2,12 +2,12 @@ FROM ubuntu:15.04
 MAINTAINER crazybit <crazybit.github@gmail.com>
 
 ## Core Utilities
-RUN apt-get update
-RUN apt-get -y upgrade
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash && \
+RUN apt-get update && \
+    apt-get -y upgrade &&\
+    apt-get install -y curl nodejs-legacy npm git nginx && \
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash && \
     nvm install v6 && \
     nvm use v6 && \
-    apt-get install -y nodejs-legacy npm git nginx && \
     npm install -g coffee-script webpack && \
     git clone http://github.com/bitshares/bitshares-ui /build
     
