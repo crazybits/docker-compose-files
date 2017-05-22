@@ -4,8 +4,8 @@ MAINTAINER crazybit <crazybit.github@gmail.com>
 ## Core Utilities
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get install -y nodejs-legacy npm git nginx webpack 
-RUN npm install -g coffee-script
+RUN apt-get install -y nodejs-legacy npm git nginx 
+RUN npm install -g coffee-script webpack
 
 RUN git clone http://github.com/bitshares/bitshares-ui /build
 WORKDIR /build
