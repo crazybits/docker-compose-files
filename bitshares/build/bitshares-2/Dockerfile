@@ -15,5 +15,4 @@ RUN	apt-get update && \
     	/build/programs/cli_wallet/cli_wallet \ 
     	/usr/local/bin && \
     	rm -rf /bitshares-2-git /build /tmp/*
-
 WORKDIR /
