@@ -1,0 +1,13 @@
+node:
+ image: crazybit/yoyow_node
+ ports: 
+ - "127.0.0.1:8090:8090"
+ volumes:
+   - ~/.data_dir:/data_dir
+
+wallet:
+ image: crazybit/yoyow_cli_wallet
+ ports:
+  - "127.0.0.1:8091:8091"
+ volumes:
+   - ./conf/wallet/conf:/conf

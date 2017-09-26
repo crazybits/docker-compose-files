@@ -1,0 +1,4 @@
+node:
+ build: build/yoyow_node
+ ports: 
+  - 8090
