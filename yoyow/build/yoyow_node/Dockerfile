@@ -7,9 +7,7 @@ WORKDIR /build
 RUN 
         curl -L -O https://github.com/yoyow-org/yoyow-core/releases/download/v0.1.0-170906/yoyow20170906.tgz && \
         tar xzf yoyow20170906.tgz && \
-        cp yoyow20170906/yoyow_node \
-        yoyow20170906/yoyow_client \ 
-        /usr/local/bin
+        cp yoyow20170906/{yoyow_node,yoyow_client} /usr/local/bin
 
 ADD docker/start.sh /start.sh
 RUN chmod a+x /start.sh
