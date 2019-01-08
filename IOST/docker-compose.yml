@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  iserver:
+    image: iostio/iost-node:2.1.0
+    restart: always
+    ports:
+      - "30000-30003:30000-30003"
+    volumes:
+      - /data/iserver:/var/lib/iserver
